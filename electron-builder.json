@@ -9,29 +9,27 @@
   "files": [
     "dist/**/*",
     "dist-electron/**/*",
+    "public/**/*",
     "package.json"
   ],
   "win": {
     "target": [
       {
-        "target": "nsis",
+        "target": "portable",
         "arch": ["x64"]
       },
       {
-        "target": "portable",
+        "target": "zip",
+        "arch": ["x64"]
+      },
+      {
+        "target": "dir",
         "arch": ["x64"]
       }
     ],
-    "requestedExecutionLevel": "asInvoker"
-  },
-  "nsis": {
-    "oneClick": false,
-    "perMachine": false,
-    "allowToChangeInstallationDirectory": true,
-    "createDesktopShortcut": "always",
-    "createStartMenuShortcut": true,
-    "shortcutName": "DocuFlow DMS",
-    "runAfterFinish": true
+    "icon": "public/icon.png",
+    "requestedExecutionLevel": "asInvoker",
+    "signAndEditExecutable": false
   },
   "portable": {
     "artifactName": "DocuFlow-DMS-${version}-Portable.exe"

@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Windows 11 Fluent / Mica Light Palette */
+    --mica-bg: #f3f3f3;
+    --mica-subtle: #f8f9fa;
+    --surface-card: #ffffff;
+    --surface-elevated: #ffffff;
+    --surface-hover: #eaeaea;
+    --surface-active: #e2e2e2;
+    --border-fluent: rgba(0, 0, 0, 0.07);
+    --border-card: rgba(0, 0, 0, 0.09);
+    --border-subtle: rgba(0, 0, 0, 0.05);
+    
+    --text-primary: #1b1b1b;
+    --text-secondary: #5d5d5d;
+    --text-muted: #8a8a8a;
+    
+    --fluent-accent: #0067c0;
+    --fluent-accent-hover: #005fb8;
+    --fluent-accent-light: rgba(0, 103, 192, 0.08);
+    
+    --shadow-fluent: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .dark {
+    /* Windows 11 Fluent / Mica Dark Palette */
+    --mica-bg: #202020;
+    --mica-subtle: #1a1a1a;
+    --surface-card: #2c2c2c;
+    --surface-elevated: #323232;
+    --surface-hover: #383838;
+    --surface-active: #404040;
+    --border-fluent: rgba(255, 255, 255, 0.08);
+    --border-card: rgba(255, 255, 255, 0.10);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    
+    --text-primary: #ffffff;
+    --text-secondary: #c5c5c5;
+    --text-muted: #888888;
+    
+    --fluent-accent: #60cdff;
+    --fluent-accent-hover: #78d4ff;
+    --fluent-accent-light: rgba(96, 205, 255, 0.12);
+    
+    --shadow-fluent: 0 4px 16px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+body {
+  font-family: 'Segoe UI Variable Text', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', Roboto, sans-serif;
+  user-select: none;
+  background-color: var(--mica-bg);
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  transition: background-color 0.2s cubic-bezier(0.1, 0.9, 0.2, 1), color 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+code, pre, .font-mono {
+  font-family: 'Cascadia Code', 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+/* Fluent Smooth Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 140, 140, 0.25);
+  border-radius: 9999px;
+  transition: background 0.15s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 140, 140, 0.5);
+}
+
+/* Windows 11 Fluent Animations & Surfaces */
+@keyframes fluent-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-fluent-in {
+  animation: fluent-fade-in 0.18s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+/* Fluent Acrylic Glass Texture */
+.fluent-acrylic {
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+.fluent-mica-card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-fluent);
+  border-radius: 12px;
+  transition: transform 0.18s cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 0.18s cubic-bezier(0.1, 0.9, 0.2, 1), border-color 0.18s ease;
+}
+
+.fluent-mica-card:hover {
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Markdown Rendering in Fluent Dark / Light */
+.markdown-body {
+  line-height: 1.65;
+  color: inherit;
+}
+
+.markdown-body h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-fluent);
+  padding-bottom: 0.4rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.02em;
+}
+
+.markdown-body h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-fluent);
+  padding-bottom: 0.3rem;
+  margin-top: 1.1rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.015em;
+}
+
+.markdown-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.markdown-body p, .markdown-body ul, .markdown-body ol {
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+}
+
+.markdown-body code {
+  background: var(--surface-hover);
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  border: 1px solid var(--border-fluent);
+}
+
+.markdown-body pre {
+  background: #141414;
+  color: #e5e5e5;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--border-fluent);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: inherit;
+}
+
+.markdown-body blockquote {
+  border-left: 3px solid var(--fluent-accent);
+  padding-left: 0.85rem;
+  margin-left: 0;
+  margin-right: 0;
+  opacity: 0.9;
+  margin-bottom: 0.75rem;
+}
+
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border-fluent);
+  padding: 0.45rem 0.65rem;
+}
+
+.markdown-body th {
+  background: var(--surface-hover);
+  font-weight: 600;
+}
